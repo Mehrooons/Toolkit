@@ -1,160 +1,164 @@
-# Mehrooons Toolkit
+# 🛠️ Mehrooons Toolkit
 
-A lightweight Windows CLI toolkit that runs directly from a Python script hosted on GitHub.
+A lightweight Windows CLI toolkit written in Python.
 
-No GUI. No installer required.
+No GUI. No installer. Just run a command from PowerShell and go.
 
 ## 🚀 Quick Start
 
-Run the toolkit directly from PowerShell:
+Run Mehrooons Toolkit directly from PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python -
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python -
 ```
 
-You can also pass a command directly:
+You can also run a specific command immediately.
+
+## 📡 Internet Test
+
+Test your internet connection and DNS:
 
 ```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python - --nettest
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --nettest
 ```
 
-## 📦 Commands
+## 💻 System Information
 
-### Internet Test
+Display basic system information:
 
 ```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python - --nettest
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --sysinfo
 ```
 
-Tests basic internet connectivity and DNS.
+## 📦 Install Applications
 
-### System Information
+Mehrooons Toolkit can install supported applications using:
 
-```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python - --sysinfo
-```
-
-Displays:
-
-* Operating system
-* Windows version
-* CPU architecture
-* Python version
-
-### Install Applications
-
-```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python - --install <app>
-```
-
-The installer uses:
-
-1. **Chocolatey** first
+1. **Chocolatey**
 2. **winget** as a fallback
 
-Example:
+Syntax:
 
 ```powershell
-irm https://raw.githubusercontent.com/<USER>/<REPO>/main/main.py | python - --install vscode
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install <app>
 ```
 
-Other supported applications:
+### Examples
 
-```text
-spotify
-vscode
-discord
-7zip
-firefox
-git
-python
-node
+Install Spotify:
+
+```powershell
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install spotify
 ```
 
-## 🛠️ How Installation Works
+Install VS Code:
 
-When you run:
-
-```text
---install vscode
+```powershell
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install vscode
 ```
 
-the toolkit checks for Chocolatey.
+### Supported Apps
+
+| App                | Command             |
+| ------------------ | ------------------- |
+| Spotify            | `--install spotify` |
+| Visual Studio Code | `--install vscode`  |
+| Discord            | `--install discord` |
+| 7-Zip              | `--install 7zip`    |
+| Firefox            | `--install firefox` |
+| Git                | `--install git`     |
+| Python             | `--install python`  |
+| Node.js            | `--install node`    |
+
+## 🔄 Installation Logic
+
+When an app is requested:
 
 ```text
-Chocolatey found?
+--install <app>
+       │
+       ▼
+Check Chocolatey
        │
    ┌───┴───┐
-  YES      NO
-   │        │
-   ▼        ▼
- Choco    Check winget
-   │        │
-   └───┬────┘
-       ▼
-    Install
+   │       │
+ Found   Not Found
+   │       │
+   ▼       ▼
+Install   Check winget
+   │       │
+   │   ┌───┴───┐
+   │   │       │
+   │  Found   Not Found
+   │   │       │
+   │   ▼       ▼
+   │ Install  Error
+   │
+   ▼
+ Done
 ```
 
-If Chocolatey is unavailable or fails, the toolkit automatically tries winget.
+Chocolatey is always attempted first. If it isn't installed or the installation fails, the toolkit falls back to winget.
 
-Package IDs are mapped separately because Chocolatey and winget use different package identifiers.
-
-## 💻 Requirements
+## 🖥️ Requirements
 
 * Windows
 * Python 3.x
 * PowerShell
 * Chocolatey and/or winget for application installation
 
-Python itself can be downloaded from the official Python website if it isn't already installed.
-
-## 📁 Project Structure
-
-```text
-mehrooons-toolkit/
-│
-├── main.py
-└── README.md
-```
-
-## ⚠️ Security
-
-This project executes Python code downloaded from a GitHub repository.
-
-Only run the command if you trust the repository and have reviewed its source code.
-
-The installer uses an explicit application allowlist rather than directly executing arbitrary package names as shell commands.
-
-## 🧪 Development
+## 🧪 Run Locally
 
 Clone the repository:
 
 ```powershell
-git clone https://github.com/<USER>/<REPO>.git
-cd <REPO>
+git clone https://github.com/Mehrooons/Toolkit.git
+cd Toolkit
 ```
 
-Run locally:
+Run the toolkit:
 
 ```powershell
-python main.py --help
+python sourceCode.py --help
 ```
 
 Test the internet checker:
 
 ```powershell
-python main.py --nettest
+python sourceCode.py --nettest
 ```
 
 Test system information:
 
 ```powershell
-python main.py --sysinfo
+python sourceCode.py --sysinfo
+```
+
+Install an application:
+
+```powershell
+python sourceCode.py --install vscode
+```
+
+## ⚠️ Security
+
+The quick-start command downloads Python source code directly from this repository and executes it locally.
+
+**Only run it if you trust the repository and have reviewed the source code.**
+
+The application installer uses an explicit list of supported applications instead of passing arbitrary package names directly to the shell.
+
+## 📁 Project Structure
+
+```text
+Toolkit/
+├── sourceCode.py
+└── README.md
 ```
 
 ## 📜 License
 
-Choose a license for the project before distributing it publicly.
+Add your preferred license before distributing the project.
 
 ---
 
