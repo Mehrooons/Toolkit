@@ -242,7 +242,7 @@ def main():
         sysinfo()
         return 0
 
-    if command == "--install":
+    if command == "--download":
         if len(args) < 2:
             print("[!] Missing application name.")
             print("Usage: --install <app>")
