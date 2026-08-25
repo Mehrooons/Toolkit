@@ -168,21 +168,12 @@ def install_app(app):
 
 
 def sysinfo():
-
-    if shutil.which("node"):
-    node_version = subprocess.check_output(
-        ["node", "--version"],
-        text=True
-    ).strip()
-    else:
-        node_version = "Not installed"
     
     print("\n=== System Information ===")
     print(f"OS:           {platform.system()}")
     print(f"Version:      {platform.version()}")
     print(f"Architecture: {platform.machine()}")
     print(f"Python:       {platform.python_version()}")
-    print(f"Node.js:      {node_version}")
 
 
 def help_menu():
