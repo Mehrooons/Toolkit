@@ -40,7 +40,7 @@ Mehrooons Toolkit can install supported applications using:
 Syntax:
 
 ```powershell
-irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install <app>
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --download <app>
 ```
 
 ### Examples
@@ -48,34 +48,34 @@ irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCo
 Install Spotify:
 
 ```powershell
-irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install spotify
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --download spotify
 ```
 
 Install VS Code:
 
 ```powershell
-irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --install vscode
+irm https://raw.githubusercontent.com/Mehrooons/Toolkit/refs/heads/main/sourceCode.py | python - --download vscode
 ```
 
 ### Supported Apps
 
-| App                | Command             |
-| ------------------ | ------------------- |
-| Spotify            | `--install spotify` |
-| Visual Studio Code | `--install vscode`  |
-| Discord            | `--install discord` |
-| 7-Zip              | `--install 7zip`    |
-| Firefox            | `--install firefox` |
-| Git                | `--install git`     |
-| Python             | `--install python`  |
-| Node.js            | `--install node`    |
+| App                | Command              |
+| ------------------ | -------------------- |
+| Spotify            | `--download spotify` |
+| Visual Studio Code | `--download vscode`  |
+| Discord            | `--download discord` |
+| 7-Zip              | `--download 7zip`    |
+| Firefox            | `--download firefox` |
+| Git                | `--download git`     |
+| Python             | `--download python`  |
+| Node.js            | `--download node`    |
 
 ## 🔄 Installation Logic
 
 When an app is requested:
 
 ```text
---install <app>
+--download <app>
        │
        ▼
 Check Chocolatey
@@ -137,7 +137,7 @@ python sourceCode.py --sysinfo
 Install an application:
 
 ```powershell
-python sourceCode.py --install vscode
+python sourceCode.py --download vscode
 ```
 
 ## ⚠️ Security
